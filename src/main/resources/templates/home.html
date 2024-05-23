@@ -24,12 +24,13 @@
 
     <main>
         <form id="postForm">
-            <label for="postContent"></label><textarea id="postContent" placeholder="How are you?" rows="4"></textarea>
+            <label for="postContent"></label>
+            <textarea id="postContent" placeholder="How are you?" rows="4"></textarea>
             <button type="submit">Post</button>
         </form>
 
         <section id="postArea">
-            <div class="post">
+            <div class="post" th:each="post : ${posts}">
                 <div class="post-content" th:text="${post.content}"></div>
                 <div class="post-time" th:text="${post.createdAt}"></div>
             </div>

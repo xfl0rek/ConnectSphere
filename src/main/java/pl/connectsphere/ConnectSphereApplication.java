@@ -9,5 +9,4 @@ public class ConnectSphereApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ConnectSphereApplication.class, args);
 	}
-
 }

@@ -24,7 +24,7 @@
 
     <main>
         <form id="postForm">
-            <textarea id="postContent" placeholder="How are you?" rows="4"></textarea>
+            <label for="postContent"></label><textarea id="postContent" placeholder="How are you?" rows="4"></textarea>
             <button type="submit">Post</button>
         </form>
 
@@ -32,33 +32,6 @@
         </section>
     </main>
 
-    <script>
-        const postForm = document.getElementById('postForm');
-        const postContent = document.getElementById('postContent');
-        const postArea = document.getElementById('postArea');
-
-        postForm.addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            const content = postContent.value.trim();
-
-            if (content !== '') {
-                const postElement = document.createElement('div');
-                postElement.classList.add('post');
-
-                const postContentElement = document.createElement('div');
-                postContentElement.classList.add('post-content');
-                postContentElement.textContent = content;
-
-                postElement.appendChild(postContentElement);
-
-                postArea.prepend(postElement);
-
-                postContent.value = '';
-            } else {
-                alert('The post content cannot be empty.');
-            }
-        });
-    </script>
+    <script src="/scripts/homeScript.js"></script>
 </body>
 </html>

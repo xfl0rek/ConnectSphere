@@ -1,3 +1,121 @@
 body {
-    background: darkslategray;
+    background: white;
+    margin: 0;
+}
+
+.header {
+    background: whitesmoke;
+    width: 100%;
+    height: 5vh;
+    top: 0;
+    left: 0;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.header-logo img {
+    width: 37px;
+    height: auto;
+    margin-right: 10px;
+}
+
+@font-face {
+    font-family: customformat;
+    src: url("../fonts/SF-Pro.ttf");
+}
+
+.header h2 {
+    font-family: customformat, serif;
+    margin: 0;
+}
+
+.buttons-container {
+    display: flex;
+    align-items: center;
+    margin-right: 30px;
+}
+
+.button {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: black;
+    margin-left: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    right: 0;
+}
+
+.logo-and-title-container {
+    display: flex;
+    align-items: center;
+}
+
+main {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+section {
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    margin-top: 30px;
+    align-items: center;
+}
+
+textarea {
+    width: 500px;
+    height: 150px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    resize: none;
+    overflow-y: auto;
+    background-color: #fff;
+    color: #333;
+    font-family: customformat, serif;
+}
+
+.post {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-family: customformat, serif;
+}
+
+.post-content {
+    margin-bottom: 10px;
+}
+
+button[type="submit"] {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: customformat, serif;
+    width: 100px;
 }

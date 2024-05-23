@@ -1,9 +1,9 @@
 package pl.connectsphere.model;
 
-import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 public class Post {
-    private LocalDateTime createdAt;
+    private LocalTime createdAt;
     private Long id;
     private String content;
 
@@ -12,14 +12,14 @@ public class Post {
     }
 
     //All args constructor
-    public Post(LocalDateTime createdAt, Long id, String content) {
+    public Post(LocalTime createdAt, Long id, String content) {
         this.createdAt = createdAt;
         this.id = id;
         this.content = content;
     }
 
     //getters and setters
-    public LocalDateTime getCreatedAt() {
+    public LocalTime getCreatedAt() {
         return createdAt;
     }
 
@@ -31,7 +31,7 @@ public class Post {
         return content;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
+    public void setCreatedAt(LocalTime createdAt) {
         this.createdAt = createdAt;
     }
 

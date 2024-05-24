@@ -9,7 +9,7 @@ import pl.connectsphere.model.Post;
 @RequestMapping("/home")
 public class PostController {
     @PostMapping
-    private String addPost(Post post) {
+    public String addPost(Post post) {
         HomeController.posts.add(post);
         return "redirect:/home";
     }

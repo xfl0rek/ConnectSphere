@@ -1,6 +1,5 @@
 package pl.connectsphere.controller;
 
-import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,23 +11,19 @@ import pl.connectsphere.repository.UserRepository;
 //TODO: Fix error
 
 @Controller
-@RequestMapping("/login")
-public class LoginController {
+@RequestMapping("/register")
+public class RegisterController {
     private final UserRepository userRepository;
 
     @Autowired
-    public LoginController(UserRepository userRepository) {
+    public RegisterController(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
     @PostMapping
-    public String login(@RequestParam String email, @RequestParam String password, HttpSession session) {
-        User user = userRepository.findByEmail(email);
-        if (user != null && user.getPassword().equals(password)) {
-            session.setAttribute("user", user);
-            return "redirect:/";
-        } else {
-            return "redirect:/login?error";
-        }
+    public String registerUser(@RequestParam String name, @RequestParam String email, @RequestParam String password) {
+        User user = new User(name, email, password);
+        userRepository.save(user);
+        return "redirect:/login";
     }
 }

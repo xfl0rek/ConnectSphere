@@ -3,13 +3,12 @@ package pl.connectsphere.controller;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pl.connectsphere.model.User;
 import pl.connectsphere.repository.UserRepository;
-
-//TODO: Fix error
 
 @Controller
 @RequestMapping("/login")
@@ -19,6 +18,11 @@ public class LoginController {
     @Autowired
     public LoginController(UserRepository userRepository) {
         this.userRepository = userRepository;
+    }
+
+    @GetMapping
+    public String showLoginForm() {
+        return "login";
     }
 
     @PostMapping

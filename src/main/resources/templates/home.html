@@ -34,6 +34,7 @@
             <div class="post" th:each="post : ${posts}">
                 <div class="post-content" th:text="${post.content}"></div>
                 <div class="post-time" th:text="${post.createdAt}"></div>
+                <div class="post-user" th:text="${post.user.name}"></div>
             </div>
         </section>
     </main>

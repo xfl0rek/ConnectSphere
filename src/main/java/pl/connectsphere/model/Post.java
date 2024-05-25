@@ -1,25 +1,33 @@
 package pl.connectsphere.model;
 
-import java.time.LocalTime;
+import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
+
+@Entity
 public class Post {
-    private LocalTime createdAt;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private LocalDateTime createdAt;
     private String content;
+
+    @ManyToOne
+    private User user;
 
     //No args constructor
     public Post() {
     }
 
     //All args constructor
-    public Post(LocalTime createdAt, Long id, String content) {
+    public Post(LocalDateTime createdAt, String content, User user) {
         this.createdAt = createdAt;
-        this.id = id;
         this.content = content;
+        this.user = user;
     }
 
     //getters and setters
-    public LocalTime getCreatedAt() {
+    public LocalDateTime getCreatedAt() {
         return createdAt;
     }
 
@@ -31,7 +39,11 @@ public class Post {
         return content;
     }
 
-    public void setCreatedAt(LocalTime createdAt) {
+    public User getUser() {
+        return user;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
 
@@ -41,5 +53,9 @@ public class Post {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

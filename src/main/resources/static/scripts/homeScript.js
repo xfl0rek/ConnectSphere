@@ -8,9 +8,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const content = postContent.value.trim();
         const currentTime = new Date();
-        const hours = currentTime.getHours();
-        const minutes = currentTime.getMinutes();
-        const formattedTime = hours + ':' + (minutes < 10 ? '0' : '') + minutes;
+        const formattedTime = `${currentTime.getHours()}:${currentTime.getMinutes()} ${currentTime.getDate()}.${currentTime.getMonth() + 1}.${currentTime.getFullYear()}`;
+
         if (content !== '') {
             const postElement = document.createElement('div');
             postElement.classList.add('post');
@@ -42,8 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
     posts.forEach(post => {
         const postTimeElement = post.querySelector('.post-time');
         const currentTime = new Date();
-        const hours = currentTime.getHours();
-        const minutes = currentTime.getMinutes();
-        postTimeElement.textContent = hours + ':' + (minutes < 10 ? '0' : '') + minutes;
+        const formattedTime = `${currentTime.getHours()}:${currentTime.getMinutes()} ${currentTime.getDate()}.${currentTime.getMonth() + 1}.${currentTime.getFullYear()}`;
+        postTimeElement.textContent = formattedTime;
     });
 });

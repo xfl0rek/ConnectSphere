@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import pl.connectsphere.model.User;
 import pl.connectsphere.repository.UserRepository;
 
-//TODO: Fix error
-
 @Controller
 @RequestMapping("/register")
 public class RegisterController {

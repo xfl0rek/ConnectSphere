@@ -30,7 +30,7 @@
             <button type="submit" name="submit">Post</button>
         </form>
 
-        <section id="postArea">
+        <section id="postArea" th:data-username="${loggedInUser.name}">
             <div class="post" th:each="post : ${posts}">
                 <div class="post-content" th:text="${post.content}"></div>
                 <div class="post-time" th:text="${post.createdAt}"></div>

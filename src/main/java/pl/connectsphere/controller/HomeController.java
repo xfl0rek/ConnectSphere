@@ -1,10 +1,12 @@
 package pl.connectsphere.controller;
 
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import pl.connectsphere.model.Post;
 import pl.connectsphere.model.User;
+import pl.connectsphere.repository.UserRepository;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -12,6 +14,12 @@ import java.util.List;
 
 @Controller
 public class HomeController {
+    private final UserRepository userRepository;
+
+    public HomeController(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
     static final List<Post> posts = new ArrayList<>();
 
     static {
@@ -21,7 +29,9 @@ public class HomeController {
     }
 
     @GetMapping("/")
-    public String home(Model model) {
+    public String home(Model model, HttpSession session) {
+        User loggedInUser = (User) session.getAttribute("user");
+        model.addAttribute("loggedInUser", loggedInUser);
         model.addAttribute("posts", posts);
         return "home";
     }

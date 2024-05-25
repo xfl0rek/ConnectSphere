@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const content = postContent.value.trim();
         const currentTime = new Date();
         const formattedTime = `${currentTime.getHours()}:${currentTime.getMinutes()} ${currentTime.getDate()}.${currentTime.getMonth() + 1}.${currentTime.getFullYear()}`;
+        const loggedInUser = postArea.getAttribute("data-username");
 
         if (content !== '') {
             const postElement = document.createElement('div');
@@ -22,8 +23,13 @@ document.addEventListener('DOMContentLoaded', function() {
             postTimeElement.classList.add('post-time');
             postTimeElement.textContent = formattedTime;
 
+            const postUserElement = document.createElement('div');
+            postUserElement.classList.add('post-user');
+            postUserElement.textContent = loggedInUser;
+
             postElement.appendChild(postContentElement);
             postElement.appendChild(postTimeElement);
+            postElement.appendChild(postUserElement);
 
             postArea.prepend(postElement);
 

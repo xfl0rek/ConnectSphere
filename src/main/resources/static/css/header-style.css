@@ -27,6 +27,11 @@
     margin: 0;
 }
 
+.header a {
+    text-decoration: none;
+    color: black;
+}
+
 .buttons-container {
     display: flex;
     align-items: center;

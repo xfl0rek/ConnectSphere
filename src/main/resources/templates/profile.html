@@ -26,15 +26,15 @@
     <div class="picture"><i class="fa-solid fa-user"></i></div>
     <div class="user-info">
         <h3>User Information</h3>
-        <p><strong>Username:</strong> JohnDoe</p>
-        <p><strong>Email:</strong> johndoe@example.com</p>
-        <p><strong>Total Posts:</strong> 10</p>
+        <p><strong>Username: </strong><span th:text="${loggedInUser.name}"></span></p>
+        <p><strong>Email: </strong><span th:text="${loggedInUser.email}"></span></p>
+        <p><strong>Total Posts: </strong></p>
     </div>
     <div class="posts">
         <h3>User Posts</h3>
-        <div class="post">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <span class="post-time">Posted: 2024-05-26 15:30</span>
+        <div class="post" th:each="post : ${posts}">
+            <p><span th:text="${post.content}"></span></p>
+            <span class="post-time" th:text="${post.createdAt}"></span>
         </div>
     </div>
 </div>

@@ -8,7 +8,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const content = postContent.value.trim();
         const currentTime = new Date();
-        const formattedTime = `${currentTime.getHours()}:${currentTime.getMinutes()} ${currentTime.getDate()}.${currentTime.getMonth() + 1}.${currentTime.getFullYear()}`;
+        const hours = currentTime.getHours().toString().padStart(2, '0');
+        const minutes = currentTime.getMinutes().toString().padStart(2, '0');
+        const formattedTime = `${hours}:${minutes} ${currentTime.getDate()}.${currentTime.getMonth() + 1}.${currentTime.getFullYear()}`;
         const loggedInUser = postArea.getAttribute("data-username");
 
         if (content !== '') {
@@ -25,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             const postUserElement = document.createElement('div');
             postUserElement.classList.add('post-user');
-            postUserElement.textContent = loggedInUser;
+            postUserElement.textContent = "@" + loggedInUser;
 
             postElement.appendChild(postContentElement);
             postElement.appendChild(postTimeElement);

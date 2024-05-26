@@ -24,6 +24,9 @@ public class DBInit implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        postRepository.deleteAll();
+        userRepository.deleteAll();
+
         userRepository.saveAll(List.of(
                 new User("czarny", "czarny@dupa.pl", "123"),
                 new User("1h4t3n1gg3rs", "debil123@niewiem.pl", "123")

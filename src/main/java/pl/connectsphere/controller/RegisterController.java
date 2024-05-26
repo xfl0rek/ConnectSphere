@@ -21,6 +21,10 @@ public class RegisterController {
 
     @PostMapping
     public String registerUser(@RequestParam String name, @RequestParam String email, @RequestParam String password) {
+        if (userRepository.existsByName(name)) {
+            return "redirect:/login";
+        }
+
         if (userRepository.existsByEmail(email)) {
             return "redirect:/login";
         }

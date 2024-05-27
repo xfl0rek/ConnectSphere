@@ -1,26 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>ConnectSphere</title>
-    <link rel="stylesheet" type="text/css" href="/css/settings-style.css">
-    <link rel="stylesheet" type="text/css" href="/css/header-style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <meta charset="UTF-8">
+  <title>ConnectSphere</title>
+  <link rel="stylesheet" type="text/css" href="/css/settings-style.css">
+  <link rel="stylesheet" type="text/css" href="/css/header-style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
-    <div class="header">
-        <div class="logo-and-title-container">
-            <div class="header-logo">
-                <img src="/logobeta.png" alt="logo.png"/>
-            </div>
-            <h2><a href="/" class="header-link">ConnectSphere</a></h2>
-        </div>
-        <div class="buttons-container">
-            <div class="button"><a href="profile"><i class="fa-regular fa-user"></i></a></div>
-            <div class="button"><a href="#"><i class="fa-regular fa-message"></i></a></div>
-            <div class="button"><a href="#"><i class="fa-regular fa-bell"></i></a></div>
-            <div class="button"><a href="#"><i class="fa-solid fa-gear"></i></a></div>
-        </div>
+<div class="header">
+  <div class="logo-and-title-container">
+    <div class="header-logo">
+      <img src="/logobeta.png" alt="logo.png"/>
     </div>
+    <h2><a href="/" class="header-link">ConnectSphere</a></h2>
+  </div>
+  <div class="buttons-container">
+    <div class="button"><a href="profile"><i class="fa-regular fa-user"></i></a></div>
+    <div class="button"><a href="#"><i class="fa-regular fa-message"></i></a></div>
+    <div class="button"><a href="#"><i class="fa-regular fa-bell"></i></a></div>
+    <div class="button"><a href="#"><i class="fa-solid fa-gear"></i></a></div>
+  </div>
+</div>
+<main>
+  <div class="form-container">
+    <form id="settings" method="post" action="">
+      <h3>User Information</h3>
+      <div class="profile-settings">
+        <div class="input-container">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username">
+        </div>
+        <div class="input-container">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email">
+        </div>
+      </div>
+      <div class="profile-settings">
+        <div class="input-container">
+          <label for="opassword">Old Password</label>
+          <input type="password" id="opassword" name="password">
+        </div>
+        <div class="input-container">
+          <label for="password">New Password</label>
+          <input type="password" id="password" name="password">
+        </div>
+      </div>
+      <div class="profile-settings">
+        <button type="submit">Save</button>
+      </div>
+    </form>
+  </div>
+</main>
 </body>
 </html>

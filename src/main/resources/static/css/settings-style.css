@@ -1,0 +1,46 @@
+h3 {
+    margin-top: 60px;
+    font-family: customformat, serif;
+    margin-left: 145px;
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+}
+
+.profile-settings {
+    font-family: customformat, serif;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-right: 20px;
+}
+
+.input-container label {
+    margin-bottom: 5px;
+    color: black;
+}
+
+.input-container input {
+    width: 200px;
+    height: 20px;
+}
+
+.profile-settings button {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: customformat, serif;
+    width: 100px;
+    margin-left: 165px;
+}

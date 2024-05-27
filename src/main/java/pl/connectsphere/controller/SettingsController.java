@@ -34,10 +34,23 @@ public class SettingsController {
 
     @PostMapping("/newSettings")
     public String saveSettings(@ModelAttribute("settingsDTO") SettingsDTO settingsDTO,
+                               BindingResult bindingResult,
                                HttpSession session,
                                RedirectAttributes redirectAttributes) {
 
         User loggedInUser = (User) session.getAttribute("user");
+
+        if (!loggedInUser.getName().equals(settingsDTO.getUsername()) &&
+                userRepository.existsByName(settingsDTO.getUsername())) {
+            bindingResult.rejectValue("username", "error.username", "Username already exists");
+            return "redirect:/settings";
+        }
+
+        if (!loggedInUser.getEmail().equals(settingsDTO.getEmail()) &&
+                userRepository.existsByEmail(settingsDTO.getEmail())) {
+            bindingResult.rejectValue("email", "error.email", "Email already exists");
+            return "redirect:/settings";
+        }
 
         loggedInUser.setName(settingsDTO.getUsername());
         loggedInUser.setEmail(settingsDTO.getEmail());

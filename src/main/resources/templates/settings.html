@@ -51,6 +51,13 @@
       </div>
     </form>
   </div>
+  <div th:if="${successMessage}" class="alert alert-success" role="alert">
+    <span th:text="${successMessage}"></span>
+    <button type="button" class="close" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
 </main>
+<script src="/scripts/settingsScript.js"></script>
 </body>
 </html>

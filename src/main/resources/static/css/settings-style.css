@@ -44,3 +44,35 @@ h3 {
     width: 100px;
     margin-left: 165px;
 }
+
+.alert {
+    padding: 15px;
+    margin: 20px auto;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    max-width: 300px;
+}
+
+.alert-success {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+}
+
+.close {
+    float: right;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    opacity: 0.2;
+    transition: opacity 0.2s ease;
+}
+
+.close:hover {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    opacity: 0.5;
+}

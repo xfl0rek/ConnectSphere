@@ -55,13 +55,8 @@ public class SettingsController {
         loggedInUser.setName(settingsDTO.getUsername());
         loggedInUser.setEmail(settingsDTO.getEmail());
 
-        //TODO: Fix password bug.
-//        if (!loggedInUser.getPassword().equals(settingsDTO.getOldPassword())) {
-//            bindingResult.rejectValue("oldPassword", "error.oldPassword", "Incorrect old password");
-//            return "redirect:/settings";
-//        }
-
-        if (settingsDTO.getNewPassword() != null && !settingsDTO.getNewPassword().isEmpty() &&
+        if (loggedInUser.getPassword().equals(settingsDTO.getOldPassword()) &&
+                settingsDTO.getNewPassword() != null && !settingsDTO.getNewPassword().isEmpty() &&
                 !settingsDTO.getNewPassword().equals(settingsDTO.getOldPassword())) {
             loggedInUser.setPassword(settingsDTO.getNewPassword());
         }

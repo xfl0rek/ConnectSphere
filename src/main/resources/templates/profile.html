@@ -28,7 +28,7 @@
         <h3>User Information</h3>
         <p><strong>Username: </strong><span th:text="${loggedInUser.name}"></span></p>
         <p><strong>Email: </strong><span th:text="${loggedInUser.email}"></span></p>
-        <p><strong>Total Posts: </strong></p>
+        <p><strong>Total Posts: </strong><span th:text="${#lists.size(posts)}"></span></p>
     </div>
     <div class="posts">
         <h3>User Posts</h3>

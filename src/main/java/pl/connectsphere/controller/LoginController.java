@@ -32,7 +32,7 @@ public class LoginController {
             session.setAttribute("user", user);
             return "redirect:/home";
         } else {
-            return "redirect:/login?error";
+            return "redirect:/?error";
         }
     }
 }

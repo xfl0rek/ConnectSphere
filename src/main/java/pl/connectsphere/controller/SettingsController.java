@@ -23,7 +23,6 @@ public class SettingsController {
     public String showSettingsForm(Model model, HttpSession session) {
         User loggedInUser = (User) session.getAttribute("user");
         model.addAttribute("loggedInUser", loggedInUser);
-        model.addAttribute("userInfo", userRepository.findByEmail(loggedInUser.getEmail()));
         return "settings";
     }
 }

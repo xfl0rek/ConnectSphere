@@ -52,6 +52,11 @@ public class SettingsController {
             return "redirect:/settings";
         }
 
+        if (!loggedInUser.getPassword().equals(settingsDTO.getOldPassword())) {
+            bindingResult.rejectValue("oldPassword", "error.oldPassword", "Incorrect old password");
+            return "redirect:/settings";
+        }
+
         loggedInUser.setName(settingsDTO.getUsername());
         loggedInUser.setEmail(settingsDTO.getEmail());
 

@@ -13,7 +13,7 @@ import pl.connectsphere.repository.PostRepository;
 import java.time.LocalDateTime;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/home")
 public class PostController {
     private final PostRepository postRepository;
 
@@ -26,14 +26,14 @@ public class PostController {
     public String addPost(@RequestParam String content, HttpSession session) {
         User user = (User) session.getAttribute("user");
         if (user == null) {
-            return "redirect:/login";
+            return "redirect:/";
         }
         if (content.isEmpty() || content.trim().isEmpty()) {
-            return "redirect:/";
+            return "redirect:/home";
         }
         LocalDateTime now = LocalDateTime.now();
         Post post = new Post(now, content, user);
         postRepository.save(post);
-        return "redirect:/";
+        return "redirect:/home";
     }
 }

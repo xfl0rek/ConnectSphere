@@ -11,7 +11,7 @@ import pl.connectsphere.model.User;
 import pl.connectsphere.repository.UserRepository;
 
 @Controller
-@RequestMapping("/login")
+@RequestMapping("/")
 public class LoginController {
     private final UserRepository userRepository;
 
@@ -30,7 +30,7 @@ public class LoginController {
         User user = userRepository.findByEmail(email);
         if (user != null && user.getPassword().equals(password)) {
             session.setAttribute("user", user);
-            return "redirect:/";
+            return "redirect:/home";
         } else {
             return "redirect:/login?error";
         }

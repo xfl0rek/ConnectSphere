@@ -22,14 +22,14 @@ public class RegisterController {
     @PostMapping
     public String registerUser(@RequestParam String name, @RequestParam String email, @RequestParam String password) {
         if (userRepository.existsByName(name)) {
-            return "redirect:/login";
+            return "redirect:/";
         }
 
         if (userRepository.existsByEmail(email)) {
-            return "redirect:/login";
+            return "redirect:/";
         }
         User user = new User(name, email, password);
         userRepository.save(user);
-        return "redirect:/login";
+        return "redirect:/";
     }
 }

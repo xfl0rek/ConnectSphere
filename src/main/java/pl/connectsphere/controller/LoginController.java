@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.connectsphere.model.User;
 import pl.connectsphere.repository.UserRepository;
 
@@ -26,12 +27,16 @@ public class LoginController {
     }
 
     @PostMapping
-    public String login(@RequestParam String email, @RequestParam String password, HttpSession session) {
+    public String login(@RequestParam String email,
+                        @RequestParam String password,
+                        HttpSession session,
+                        RedirectAttributes redirectAttributes) {
         User user = userRepository.findByEmail(email);
         if (user != null && user.getPassword().equals(password)) {
             session.setAttribute("user", user);
             return "redirect:/home";
         } else {
+            redirectAttributes.addFlashAttribute("message", "Invalid email or password.");
             return "redirect:/?error";
         }
     }

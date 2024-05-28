@@ -56,7 +56,12 @@
         </div>
     </div>
 </div>
-
-    <script src="/scripts/loginScript.js"></script>
+<div th:if="${message}" class="alert alert-success" role="alert">
+    <span th:text="${message}"></span>
+    <button type="button" class="close" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<script src="/scripts/loginScript.js"></script>
 </body>
 </html>

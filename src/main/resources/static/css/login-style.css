@@ -208,3 +208,40 @@ body {
 .container.active .toggle-right{
     transform: translateX(200%);
 }
+
+.alert {
+    padding: 15px;
+    margin: 20px auto;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    max-width: 300px;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.alert-success {
+    color: #f44336;
+    background-color: #ffebee;
+    border-color: #ffcdd2;
+    font-family: customformat, serif;
+}
+
+.close {
+    float: right;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    opacity: 0.2;
+    transition: opacity 0.2s ease;
+}
+
+.close:hover {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    opacity: 0.5;
+}

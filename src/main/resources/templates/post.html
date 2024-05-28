@@ -31,15 +31,15 @@
         </div>
 
         <div class="comment-section">
-            <form id="commentForm" method="post" action="#">
+            <form id="commentForm" method="post" th:action="@{/home/post/{postId}/addComment(postId=${post.id})}">
                 <textarea id="commentContent" name="content" placeholder="Write a comment..." rows="3"></textarea>
                 <button type="submit">Add Comment</button>
             </form>
 
-            <div class="comments">
+            <div class="comments" th:each="comment : ${comments}">
                 <div class="comment">
-                    <div class="comment-content">Comment</div>
-                    <div class="comment-user">Username</div>
+                    <div class="comment-content" th:text="${comment.comment}"></div>
+                    <div class="comment-user" th:text="${comment.user.name}"></div>
                 </div>
             </div>
         </div>

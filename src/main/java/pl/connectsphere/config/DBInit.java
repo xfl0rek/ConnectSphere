@@ -5,6 +5,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import pl.connectsphere.model.Post;
 import pl.connectsphere.model.User;
+import pl.connectsphere.repository.CommentRepository;
 import pl.connectsphere.repository.PostRepository;
 import pl.connectsphere.repository.UserRepository;
 
@@ -15,15 +16,20 @@ import java.util.List;
 public class DBInit implements CommandLineRunner {
     private final UserRepository userRepository;
     private final PostRepository postRepository;
+    private final CommentRepository commentRepository;
 
     @Autowired
-    public DBInit(UserRepository userRepository, PostRepository postRepository) {
+    public DBInit(UserRepository userRepository,
+                  PostRepository postRepository,
+                  CommentRepository commentRepository) {
         this.userRepository = userRepository;
         this.postRepository = postRepository;
+        this.commentRepository = commentRepository;
     }
 
     @Override
     public void run(String... args) throws Exception {
+        commentRepository.deleteAll();
         postRepository.deleteAll();
         userRepository.deleteAll();
 

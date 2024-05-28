@@ -3,6 +3,7 @@ package pl.connectsphere.model;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "comments")
 public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,8 +19,7 @@ public class Comment {
     public Comment() {
     }
 
-    public Comment(Long id, String comment, Post post, User user) {
-        this.id = id;
+    public Comment(String comment, Post post, User user) {
         this.comment = comment;
         this.post = post;
         this.user = user;

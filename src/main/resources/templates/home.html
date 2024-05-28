@@ -32,7 +32,7 @@
         </form>
 
         <section id="postArea" th:data-username="${loggedInUser.name}">
-            <a class="a" th:each="post : ${posts}" th:href="@{'/post/' + ${post.id}}">
+            <a class="a" th:each="post : ${posts}" th:href="@{'/home/post/' + ${post.id}}">
                 <div class="post">
                     <div class="post-content" th:text="${post.content}"></div>
                     <div class="post-time" th:text="${post.createdAt}"></div>

@@ -2,10 +2,10 @@ package pl.connectsphere.controller;
 
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.connectsphere.model.Post;
 import pl.connectsphere.model.User;
@@ -38,4 +38,18 @@ public class PostController {
         postRepository.save(post);
         return "redirect:/home";
     }
+
+    @GetMapping("/post/{postId}")
+    public String showPost(@PathVariable("postId") Long postId, Model model) throws ChangeSetPersister.NotFoundException {
+        Post post = postRepository.findById(postId).orElse(null);
+
+        if (post == null) {
+            throw new ChangeSetPersister.NotFoundException();
+        }
+
+        model.addAttribute("posts", post);
+
+        return "post";
+    }
+
 }

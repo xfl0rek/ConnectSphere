@@ -40,14 +40,17 @@ public class PostController {
     }
 
     @GetMapping("/post/{postId}")
-    public String showPost(@PathVariable("postId") Long postId, Model model) throws ChangeSetPersister.NotFoundException {
+    public String showPost(@PathVariable("postId") Long postId, Model model, HttpSession session) throws ChangeSetPersister.NotFoundException {
         Post post = postRepository.findById(postId).orElse(null);
+        User loggedInUser = (User) session.getAttribute("user");
 
         if (post == null) {
             throw new ChangeSetPersister.NotFoundException();
         }
 
         model.addAttribute("posts", post);
+        model.addAttribute("post", post);
+        model.addAttribute("loggedInUser", loggedInUser);
 
         return "post";
     }

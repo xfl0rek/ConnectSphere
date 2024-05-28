@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>ConnectSphere</title>
@@ -16,11 +16,41 @@
         <h2><a href="/home" class="header-link">ConnectSphere</a></h2>
     </div>
     <div class="buttons-container">
-        <div class="button"><a href="profile"><i class="fa-regular fa-user"></i></a></div>
+        <div class="button"><a href="/profile"><i class="fa-regular fa-user"></i></a></div>
         <div class="button"><a href="#"><i class="fa-regular fa-message"></i></a></div>
-        <div class="button"><a href="logout"><i class="fa-solid fa-right-from-bracket"></i></a></div>
-        <div class="button"><a href="settings"><i class="fa-solid fa-gear"></i></a></div>
+        <div class="button"><a href="/logout"><i class="fa-solid fa-right-from-bracket"></i></a></div>
+        <div class="button"><a href="/settings"><i class="fa-solid fa-gear"></i></a></div>
     </div>
 </div>
+<main>
+    <section id="post-area">
+        <div class="post">
+            <div class="post-content" th:text="${post.content}"></div>
+            <div class="post-time" th:text="${post.createdAt}"></div>
+            <div class="post-user" th:text="${post.user.name}"></div>
+        </div>
+
+        <div class="comment-section">
+            <form id="commentForm" method="post" action="#">
+                <textarea id="commentContent" name="content" placeholder="Write a comment..." rows="3"></textarea>
+                <button type="submit">Add Comment</button>
+            </form>
+
+            <div class="comments">
+                <div class="comment">
+                    <div class="comment-content">Comment</div>
+                    <div class="comment-user">Username</div>
+                </div>
+            </div>
+        </div>
+
+        <div th:if="${loggedInUser.id eq post.user.id}">
+            <form id="deletePostForm" method="post" action="#">
+                <input type="hidden" name="postId" th:value="${post.id}">
+                <button type="submit">Delete Post</button>
+            </form>
+        </div>
+    </section>
+</main>
 </body>
 </html>

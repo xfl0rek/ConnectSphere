@@ -52,6 +52,12 @@
         </div>
     </section>
 </main>
+<div th:if="${postError}" class="alert alert-success" role="alert">
+    <span th:text="${postError}"></span>
+    <button type="button" class="close" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
 <script src="/scripts/postScript.js"></script>
 </body>
 </html>

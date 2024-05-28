@@ -94,3 +94,41 @@ button[type="submit"] {
 button[type="submit"]:hover {
     background: #0056b3;
 }
+
+.alert {
+    padding: 15px;
+    margin: 20px auto;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    max-width: 300px;
+}
+
+.alert-success {
+    color: #f44336;
+    background-color: #ffebee;
+    border-color: #ffcdd2;
+    font-family: customformat, serif;
+}
+
+.close {
+    float: right;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    opacity: 0.2;
+    transition: opacity 0.2s ease;
+}
+
+.close:hover {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.a {
+    text-decoration: none;
+    color: black;
+}

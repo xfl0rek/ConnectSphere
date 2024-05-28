@@ -57,6 +57,12 @@
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
+  <div th:if="${error}" class="alert alert-error" role="alert">
+    <span th:text="${error}"></span>
+    <button type="button" class="close" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
 </main>
 <script src="/scripts/settingsScript.js"></script>
 </body>

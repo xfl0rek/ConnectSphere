@@ -60,6 +60,13 @@ h3 {
     font-family: customformat, serif;
 }
 
+.alert-error {
+    color: #f44336;
+    background-color: #ffebee;
+    border-color: #ffcdd2;
+    font-family: customformat, serif;
+}
+
 .close {
     float: right;
     font-size: 20px;

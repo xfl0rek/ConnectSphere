@@ -4,7 +4,6 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,7 +33,6 @@ public class SettingsController {
 
     @PostMapping("/newSettings")
     public String saveSettings(@ModelAttribute("settingsDTO") SettingsDTO settingsDTO,
-                               BindingResult bindingResult,
                                HttpSession session,
                                RedirectAttributes redirectAttributes) {
 
@@ -42,13 +40,13 @@ public class SettingsController {
 
         if (!loggedInUser.getName().equals(settingsDTO.getUsername()) &&
                 userRepository.existsByName(settingsDTO.getUsername())) {
-            bindingResult.rejectValue("username", "error.username", "Username already exists");
+            redirectAttributes.addFlashAttribute("error", "Username already exists");
             return "redirect:/settings";
         }
 
         if (!loggedInUser.getEmail().equals(settingsDTO.getEmail()) &&
                 userRepository.existsByEmail(settingsDTO.getEmail())) {
-            bindingResult.rejectValue("email", "error.email", "Email already exists");
+            redirectAttributes.addFlashAttribute("error", "Email already exists");
             return "redirect:/settings";
         }
 

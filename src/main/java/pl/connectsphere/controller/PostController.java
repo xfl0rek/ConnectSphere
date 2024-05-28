@@ -1,6 +1,7 @@
 package pl.connectsphere.controller;
 
 import jakarta.servlet.http.HttpSession;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Controller;
@@ -66,12 +67,14 @@ public class PostController {
         return "post";
     }
 
+    @Transactional
     @PostMapping("/post/{postId}/deletePost")
     public String deletePost(@PathVariable("postId") Long postId) {
         Post post = postRepository.findById(postId).orElse(null);
         if (post == null) {
             return "redirect:/home";
         }
+        commentRepository.deleteByPost(post);
         postRepository.delete(post);
         return "redirect:/home";
     }

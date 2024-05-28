@@ -45,7 +45,7 @@
         </div>
 
         <div th:if="${loggedInUser.id eq post.user.id}">
-            <form id="deletePostForm" method="post" action="#">
+            <form id="deletePostForm" method="post" th:action="@{/home/post/{postId}/deletePost(postId=${post.id})}">
                 <input type="hidden" name="postId" th:value="${post.id}">
                 <button type="submit">Delete Post</button>
             </form>

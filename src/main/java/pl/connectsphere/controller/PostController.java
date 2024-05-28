@@ -55,4 +55,13 @@ public class PostController {
         return "post";
     }
 
+    @PostMapping("/post/{postId}/deletePost")
+    public String deletePost(@PathVariable("postId") Long postId, RedirectAttributes redirectAttributes) {
+        Post post = postRepository.findById(postId).orElse(null);
+        if (post == null) {
+            return "redirect:/home";
+        }
+        postRepository.delete(post);
+        return "redirect:/home";
+    }
 }

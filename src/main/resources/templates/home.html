@@ -32,11 +32,13 @@
         </form>
 
         <section id="postArea" th:data-username="${loggedInUser.name}">
-            <div class="post" th:each="post : ${posts}">
-                <div class="post-content" th:text="${post.content}"></div>
-                <div class="post-time" th:text="${post.createdAt}"></div>
-                <div class="post-user" th:text="${post.user.name}"></div>
-            </div>
+            <a class="a" th:each="post : ${posts}" th:href="@{'/post/' + ${post.id}}">
+                <div class="post">
+                    <div class="post-content" th:text="${post.content}"></div>
+                    <div class="post-time" th:text="${post.createdAt}"></div>
+                    <div class="post-user" th:text="${post.user.name}"></div>
+                </div>
+            </a>
         </section>
     </main>
     <div th:if="${postError}" class="alert alert-success" role="alert">

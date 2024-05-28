@@ -56,7 +56,7 @@ public class PostController {
     }
 
     @PostMapping("/post/{postId}/deletePost")
-    public String deletePost(@PathVariable("postId") Long postId, RedirectAttributes redirectAttributes) {
+    public String deletePost(@PathVariable("postId") Long postId) {
         Post post = postRepository.findById(postId).orElse(null);
         if (post == null) {
             return "redirect:/home";

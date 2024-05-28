@@ -16,7 +16,7 @@
         <h2><a href="/home" class="header-link">ConnectSphere</a></h2>
     </div>
     <div class="buttons-container">
-        <div class="button"><a href="/profile"><i class="fa-regular fa-user"></i></a></div>
+        <div class="button"><a th:href="@{/profile/{userId}(userId=${loggedInUser.id})}"><i class="fa-regular fa-user"></i></a></div>
         <div class="button"><a href="#"><i class="fa-regular fa-message"></i></a></div>
         <div class="button"><a href="/logout"><i class="fa-solid fa-right-from-bracket"></i></a></div>
         <div class="button"><a href="/settings"><i class="fa-solid fa-gear"></i></a></div>
@@ -27,7 +27,9 @@
         <div class="post">
             <div class="post-content" th:text="${post.content}"></div>
             <div class="post-time" th:text="${post.createdAt}"></div>
-            <div class="post-user" th:text="${post.user.name}"></div>
+            <a th:href="@{'/profile/' + ${post.user.id}}">
+                <div class="post-user" th:text="${post.user.name}"></div>
+            </a>
         </div>
 
         <div class="comment-section">
@@ -39,7 +41,9 @@
             <div class="comments" th:each="comment : ${comments}">
                 <div class="comment">
                     <div class="comment-content" th:text="${comment.comment}"></div>
-                    <div class="comment-user" th:text="${comment.user.name}"></div>
+                    <a th:href="@{'/profile/' + ${comment.user.id}}">
+                        <div class="comment-user" th:text="${comment.user.name}"></div>
+                    </a>
                 </div>
             </div>
         </div>

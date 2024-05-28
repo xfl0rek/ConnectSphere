@@ -16,18 +16,18 @@
         <h2><a href="/home" class="header-link">ConnectSphere</a></h2>
     </div>
     <div class="buttons-container">
-        <div class="button"><a href="profile"><i class="fa-regular fa-user"></i></a></div>
+        <div class="button"><a th:href="@{/profile/{userId}(userId=${loggedInUser.id})}"><i class="fa-regular fa-user"></i></a></div>
         <div class="button"><a href="#"><i class="fa-regular fa-message"></i></a></div>
-        <div class="button"><a href="logout"><i class="fa-solid fa-right-from-bracket"></i></a></div>
-        <div class="button"><a href="settings"><i class="fa-solid fa-gear"></i></a></div>
+        <div class="button"><a href="/logout"><i class="fa-solid fa-right-from-bracket"></i></a></div>
+        <div class="button"><a href="/settings"><i class="fa-solid fa-gear"></i></a></div>
     </div>
 </div>
 <div class="container">
     <div class="picture"><i class="fa-solid fa-user"></i></div>
     <div class="user-info">
         <h3>User Information</h3>
-        <p><strong>Username: </strong><span th:text="${loggedInUser.name}"></span></p>
-        <p><strong>Email: </strong><span th:text="${loggedInUser.email}"></span></p>
+        <p><strong>Username: </strong><span th:text="${user.name}"></span></p>
+        <p><strong>Email: </strong><span th:text="${user.email}"></span></p>
         <p><strong>Total Posts: </strong><span th:text="${#lists.size(posts)}"></span></p>
     </div>
     <div class="posts">

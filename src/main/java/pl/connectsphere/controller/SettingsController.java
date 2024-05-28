@@ -28,6 +28,7 @@ public class SettingsController {
     public String showSettingsForm(Model model, HttpSession session) {
         User loggedInUser = (User) session.getAttribute("user");
         model.addAttribute("settingsDTO", new SettingsDTO(loggedInUser));
+        model.addAttribute("loggedInUser", loggedInUser);
         return "settings";
     }
 

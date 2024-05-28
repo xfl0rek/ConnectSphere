@@ -128,7 +128,12 @@ button[type="submit"]:hover {
     opacity: 0.5;
 }
 
-.a {
+.post a {
+    text-decoration: none;
+    color: black;
+}
+
+.comment a {
     text-decoration: none;
     color: black;
 }

@@ -8,6 +8,7 @@ import pl.connectsphere.model.User;
 import pl.connectsphere.repository.CommentRepository;
 import pl.connectsphere.repository.PostRepository;
 import pl.connectsphere.repository.UserRepository;
+import pl.connectsphere.security.PasswordEncoder;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -17,6 +18,7 @@ public class DBInit implements CommandLineRunner {
     private final UserRepository userRepository;
     private final PostRepository postRepository;
     private final CommentRepository commentRepository;
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
     public DBInit(UserRepository userRepository,
@@ -33,9 +35,11 @@ public class DBInit implements CommandLineRunner {
         postRepository.deleteAll();
         userRepository.deleteAll();
 
+        passwordEncoder = new PasswordEncoder();
+
         userRepository.saveAll(List.of(
-                new User("user1", "dupa@dupa.pl", "123"),
-                new User("user2", "dupa@niewiem.pl", "123")
+                new User("user1", "dupa@dupa.pl", passwordEncoder.encrypt("123")),
+                new User("user2", "dupa@niewiem.pl", passwordEncoder.encrypt("123"))
         ));
 
         List<User> users = userRepository.findAll();

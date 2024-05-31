@@ -10,11 +10,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.connectsphere.model.User;
 import pl.connectsphere.repository.UserRepository;
+import pl.connectsphere.security.PasswordEncoder;
 
 @Controller
 @RequestMapping("/")
 public class LoginController {
     private final UserRepository userRepository;
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
     public LoginController(UserRepository userRepository) {
@@ -31,8 +33,9 @@ public class LoginController {
                         @RequestParam String password,
                         HttpSession session,
                         RedirectAttributes redirectAttributes) {
+        passwordEncoder = new PasswordEncoder();
         User user = userRepository.findByEmail(email);
-        if (user != null && user.getPassword().equals(password)) {
+        if (user != null && passwordEncoder.decrypt(user.getPassword()).equals(password)) {
             session.setAttribute("user", user);
             return "redirect:/home";
         } else {

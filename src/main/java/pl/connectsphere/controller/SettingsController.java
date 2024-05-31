@@ -12,12 +12,14 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.connectsphere.dto.SettingsDTO;
 import pl.connectsphere.model.User;
 import pl.connectsphere.repository.UserRepository;
+import pl.connectsphere.security.PasswordEncoder;
 
 @Controller
 @RequestMapping("/settings")
 public class SettingsController {
 
     private final UserRepository userRepository;
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
     public SettingsController(UserRepository userRepository) {
@@ -54,10 +56,12 @@ public class SettingsController {
         loggedInUser.setName(settingsDTO.getUsername());
         loggedInUser.setEmail(settingsDTO.getEmail());
 
-        if (loggedInUser.getPassword().equals(settingsDTO.getOldPassword()) &&
+        passwordEncoder = new PasswordEncoder();
+
+        if (loggedInUser.getPassword().equals(passwordEncoder.encrypt(settingsDTO.getOldPassword())) &&
                 settingsDTO.getNewPassword() != null && !settingsDTO.getNewPassword().isEmpty() &&
                 !settingsDTO.getNewPassword().equals(settingsDTO.getOldPassword())) {
-            loggedInUser.setPassword(settingsDTO.getNewPassword());
+            loggedInUser.setPassword(passwordEncoder.encrypt(settingsDTO.getNewPassword()));
         }
 
         userRepository.save(loggedInUser);

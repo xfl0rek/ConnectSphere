@@ -34,8 +34,8 @@ public class DBInit implements CommandLineRunner {
         userRepository.deleteAll();
 
         userRepository.saveAll(List.of(
-                new User("czarny", "czarny@dupa.pl", "123"),
-                new User("1h4t3n1gg3rs", "debil123@niewiem.pl", "123")
+                new User("user1", "dupa@dupa.pl", "123"),
+                new User("user2", "dupa@niewiem.pl", "123")
         ));
 
         List<User> users = userRepository.findAll();
@@ -43,7 +43,8 @@ public class DBInit implements CommandLineRunner {
         postRepository.saveAll(List.of(
                 new Post(LocalDateTime.now(), "Dupa.", users.get(0)),
                 new Post(LocalDateTime.now(), "Witam.", users.get(1)),
-                new Post(LocalDateTime.now(), "Yikes.", users.get(0))
+                new Post(LocalDateTime.now(), "Lorem ipsum dolor sit amet, consectetur adipiscing elit, " +
+                        "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua..", users.get(0))
         ));
     }
 }

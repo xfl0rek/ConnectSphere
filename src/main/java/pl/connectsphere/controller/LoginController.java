@@ -35,7 +35,7 @@ public class LoginController {
                         RedirectAttributes redirectAttributes) {
         passwordEncoder = new PasswordEncoder();
         User user = userRepository.findByEmail(email);
-        if (user != null && passwordEncoder.decrypt(user.getPassword()).equals(password)) {
+        if (user != null && user.getPassword().equals(passwordEncoder.encrypt(password))) {
             session.setAttribute("user", user);
             return "redirect:/home";
         } else {
